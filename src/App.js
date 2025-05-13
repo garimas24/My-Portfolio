@@ -1,6 +1,98 @@
 import "./App.css";
+import { useEffect, useState } from "react";
+import Swiper from "swiper";
+import "swiper/bundle";
+import ScrollReveal from "scrollreveal";
+import "./contact.php";
+import emailjs from "emailjs-com";
+const sections = ["home", "about", "services", "contact"];
 
-function App() {
+const Navbar = () => {
+  const [activeSection, setActiveSection] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Scroll handler
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setIsSticky(scrollY > 100);
+
+      sections.forEach((id) => {
+        const section = document.getElementById(id);
+        if (section) {
+          const offsetTop = section.offsetTop - 150;
+          const height = section.offsetHeight;
+
+          if (scrollY >= offsetTop && scrollY < offsetTop + height) {
+            setActiveSection(id);
+            setMenuOpen(false);
+          }
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Swiper init
+  useEffect(() => {
+    new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 50,
+      loop: true,
+      grabCursor: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  }, []);
+
+  // ScrollReveal init
+  useEffect(() => {
+    const sr = ScrollReveal({
+      distance: "80px",
+      duration: 2000,
+      delay: 200,
+      reset: false,
+    });
+
+    sr.reveal(".home-content, .heading", { origin: "top" });
+    sr.reveal(
+      ".home-img img, .services-container, .portfolio-box, .testimonial-wrapper, .contact form",
+      { origin: "bottom" }
+    );
+    sr.reveal(".home-content h1, .about-img img", { origin: "left" });
+    sr.reveal(".home-content h3, .home-content p, .about-content", {
+      origin: "right",
+    });
+  }, []);
+
+  // Dark mode toggle
+  const toggleDarkMode = () => {
+    setDarkMode((prev) => !prev);
+    document.body.classList.toggle("dark-mode");
+  };
+};
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  emailjs
+    .sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", e.target, "YOUR_USER_ID")
+    .then(
+      () => alert("Message sent!"),
+      () => alert("Failed to send message")
+    );
+};
+
+const App = () => {
   return (
     <div className="App">
       <div className="header">
@@ -42,7 +134,10 @@ function App() {
             to real-world projects, collaborate with talented teams, and
             continue learning in a fast-paced environment.
           </p>
-
+          <link
+            href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+            rel="stylesheet"
+          ></link>
           <div className="social-media">
             <a href="mail to:dixitgarima24@gmail.com" target="_blank">
               <i className="bx bx-envelope"></i>
@@ -62,7 +157,7 @@ function App() {
           </div>
 
           <a
-            href="https://drive.google.com/file/d/1VJim_hWSKuTKWwtaKP_7ONmVd8JUfhgs/view?usp=drive_link"
+            href="https://docs.google.com/document/d/1w5kTqEmIDwVV_U_bAQF-zP-Wnpu7pH9SnTDez_4X3QU/edit?usp=drive_link"
             target="_blank"
             className="btn"
           >
@@ -264,31 +359,6 @@ function App() {
         </div>
       </section>
 
-      <section class="contact" id="contact">
-        <h2 class="heading">
-          Contact <span>Me!</span>
-        </h2>
-
-        <form action="contact.php" method="POST">
-          <div class="input-box">
-            <input type="text" placeholder="Full Name" />
-            <input type="email" placeholder="Email Address" />
-          </div>
-          <div class="input-box">
-            <input type="number" placeholder="Mobile Number" />
-            <input type="text" placeholder="Email Subject" />
-          </div>
-          <textarea
-            name=""
-            id=""
-            cols="30"
-            rows="10"
-            placeholder="Your Message"
-          ></textarea>
-          <input type="submit" value="Send Message" class="btn" />
-        </form>
-      </section>
-
       <footer class="footer">
         <div class="footer-text">
           <p>Copyright &copy; 2023 | All Rights Reserved.</p>
@@ -310,6 +380,6 @@ function App() {
       <script src="js/script.js"></script>
     </div>
   );
-}
+};
 
 export default App;

@@ -5,6 +5,7 @@ import "swiper/css";
 
 // Import ScrollReveal
 import ScrollReveal from "scrollreveal";
+import { useEffect } from "react";
 
 /*========== menu icon navbar ==========*/
 let menuIcon = document.querySelector("#menu-icon");

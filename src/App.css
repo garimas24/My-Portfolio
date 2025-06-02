@@ -25,11 +25,11 @@
   color: var(--bg-color);
 }
 
-.dark-mode {
+/* .dark-mode {
   --bg-color: #0b061f;
   --text-color: #fdfdfd;
   --shadow-color: rgba(0, 0, 0, .7);
-}
+} */
 
 html {
   font-size: 62.5%;
@@ -64,17 +64,25 @@ body {
   color: var(--main-color);
   font-weight: 600;
   margin-right: auto;
+  background-color: var(--white-color);
+  transition: background-color 0.3s ease;
 }
 
 .navbar a {
   position: relative;
   font-size: 1.7rem;
   color: var(--white-color);
+  /* main */
   font-weight: 500;
   margin-right: 3.5rem;
+  background-color: var(--main-color);
+  transition: background-color 0.3s ease;
 
 }
 
+/* .header.sticky .navbar {
+  background-color: var(--main-color);
+} */
 
 .header.sticky .navbar a {
   color: var(--text-color);
@@ -82,7 +90,7 @@ body {
 }
 
 .header.sticky .navbar a.active {
-  color: var(--main-color);
+  color: var(--white-color);
 }
 
 .navbar a.active::before {
@@ -96,11 +104,11 @@ body {
 }
 
 .header.sticky .navbar a::before {
-  background: var(--main-color);
+  background: var(--white-color);
   opacity: .7;
 }
 
-#darkMode-icon {
+/* #darkMode-icon {
   font-size: 2.4rem;
   color: var(--white-color);
   cursor: pointer;
@@ -109,7 +117,7 @@ body {
 .header.sticky #darkMode-icon {
   color: var(--text-color);
   opacity: .9;
-}
+} */
 
 #menu-icon {
   font-size: 3.6rem;

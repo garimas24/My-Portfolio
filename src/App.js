@@ -11,7 +11,7 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  // const [darkMode, setDarkMode] = useState(false);
 
   // Scroll handler
   useEffect(() => {
@@ -76,10 +76,10 @@ const Navbar = () => {
   }, []);
 
   // Dark mode toggle
-  const toggleDarkMode = () => {
-    setDarkMode((prev) => !prev);
-    document.body.classList.toggle("dark-mode");
-  };
+  //   const toggleDarkMode = () => {
+  //     setDarkMode((prev) => !prev);
+  //     document.body.classList.toggle("dark-mode");
+  //   };
 };
 
 const handleSubmit = (e) => {
@@ -111,7 +111,7 @@ const App = () => {
             <a href="#contact">Contact</a>
           </nav>
 
-          <div className="bx bx-moon" id="darkMode-icon"></div>
+          {/* <div className="bx bx-moon" id="darkMode-icon"></div> */}
 
           <div className="bx bx-menu" id="menu-icon"></div>
         </header>
@@ -122,17 +122,16 @@ const App = () => {
           <h1>Garima</h1>
           <p>
             Hi! I'm a passionate Frontend Developer with a strong interest in
-            building responsive, user-friendly web interfaces. With a background
-            in Electrical Engineering and a recent transition into tech, I’ve
-            dedicated the last year to mastering modern frontend technologies
-            through hands-on projects and structured learning. I specialize in
-            HTML, CSS, JavaScript, and React.js, and have experience working
-            with tools like Redux, Tailwind CSS, Material UI, and API
-            integration. I enjoy transforming designs into functional,
-            accessible, and engaging user experiences. I’m actively seeking
-            opportunities to grow as a frontend developer where I can contribute
-            to real-world projects, collaborate with talented teams, and
-            continue learning in a fast-paced environment.
+            building responsive, user-friendly web interfaces.I’ve dedicated the
+            last year to mastering modern frontend technologies through hands-on
+            projects and structured learning. <br />I specialize in HTML, CSS,
+            JavaScript, and React.js, and have experience working with tools
+            like Redux, Tailwind CSS, Material UI, RESTfulAPI & API integration.
+            <br />I enjoy transforming designs into functional, accessible, and
+            engaging user experiences. I’m actively seeking opportunities to
+            grow as a frontend developer where I can contribute to real-world
+            projects, collaborate with talented teams, and continue learning in
+            a fast-paced environment.
           </p>
           <link
             href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
@@ -157,7 +156,8 @@ const App = () => {
           </div>
 
           <a
-            href="https://docs.google.com/document/d/1w5kTqEmIDwVV_U_bAQF-zP-Wnpu7pH9SnTDez_4X3QU/edit?usp=drive_link"
+            // href="https://docs.google.com/document/d/1w5kTqEmIDwVV_U_bAQF-zP-Wnpu7pH9SnTDez_4X3QU/edit?usp=drive_link"
+            href="https://drive.google.com/file/d/17991Ha6PVGcPr6qDu0wp8b_y9pX5c-xd/view?usp=drive_link"
             target="_blank"
             className="btn"
           >
@@ -194,7 +194,7 @@ const App = () => {
             I'm a freelance web developer with a passion for crafting intuitive
             and dynamic digital experiences. With a solid foundation in
             full-stack development, honed through completing a comprehensive{" "}
-            <span>Java Full Stack</span> course at <span>Crio.Do</span>,
+            <span>JavaScript Full Stack</span> course at <span>Crio.Do</span>,
           </h3>
           <p>
             I specialize in building responsive websites and web applications
@@ -357,6 +357,51 @@ const App = () => {
             </div>
           </div>
         </div>
+      </section>
+
+      <section className="contact" id="contact">
+        <h2 className="heading">
+          Contact <span>Me!</span>
+        </h2>
+        <form
+          action="https://formsubmit.co/dixitgarima24@gmail.com"
+          method="POST"
+        >
+          {/* Optional hidden inputs */}
+          <input type="hidden" name="_captcha" value="false" />
+          <input
+            type="hidden"
+            name="_next"
+            value="https://yourdomain.com/thank-you"
+          />
+
+          <div className="input-box">
+            <input
+              type="text"
+              name="fullname"
+              placeholder="Full Name"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              required
+            />
+          </div>
+          <div className="input-box">
+            <input type="tel" name="mobile" placeholder="Mobile Number" />
+            <input type="text" name="subject" placeholder="Email Subject" />
+          </div>
+          <textarea
+            name="message"
+            cols="30"
+            rows="10"
+            placeholder="Your Message"
+            required
+          ></textarea>
+          <input type="submit" value="Send Message" className="btn" />
+        </form>
       </section>
 
       <footer class="footer">
